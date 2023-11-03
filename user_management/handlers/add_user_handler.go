@@ -1,35 +1,18 @@
-package main
+package handlers
 
 import (
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"strings"
 
 	"gopkg.in/yaml.v2"
+
+	"user_management/models"
 )
 
-type Users struct {
-	Users map[string]User `yaml:"users"`
-}
-
-type User struct {
-	Disabled    bool     `yaml:"disabled"`
-	Displayname string   `yaml:"displayname"`
-	Password    string   `yaml:"password"`
-	Email       string   `yaml:"email"`
-	Groups      []string `yaml:"groups"`
-}
-
-func main() {
-	http.HandleFunc("/add-user", addUserHandler)
-	http.Handle("/", http.FileServer(http.Dir("static")))
-	log.Fatal(http.ListenAndServe(":3000", nil))
-}
-
-func addUserHandler(w http.ResponseWriter, r *http.Request) {
+func AddUserHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -55,7 +38,7 @@ func addUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var users Users
+	var users models.Users
 	err = yaml.Unmarshal(usersData, &users)
 	if err != nil {
 		http.Error(w, "Failed to parse users.yaml file", http.StatusInternalServerError)
@@ -69,7 +52,7 @@ func addUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Create a new user object
-	newUser := User{
+	newUser := models.User{
 		Disabled:    false,
 		Displayname: displayname,
 		Password:    password,

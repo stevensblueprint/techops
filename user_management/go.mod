@@ -1,4 +1,4 @@
-module user_server
+module user_management
 
 go 1.21.3
 

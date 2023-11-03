@@ -6,6 +6,8 @@ import (
 	"os"
 	"strings"
 	"testing"
+
+	"user_management/handlers"
 )
 
 func TestAddUserHandler(t *testing.T) {
@@ -41,7 +43,7 @@ users:
 	res := httptest.NewRecorder()
 
 	// Call the addUserHandler function with the test request and response recorder
-	addUserHandler(res, req)
+	handlers.AddUserHandler(res, req)
 
 	// Check the response status code
 	if res.Code != http.StatusOK {
