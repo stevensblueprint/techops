@@ -1,16 +1,16 @@
 package main
 
 import (
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"strings"
 	"testing"
 )
 
 func TestAddUserHandler(t *testing.T) {
 	// Create a temporary users.yaml file for testing
-	tempFile, err := ioutil.TempFile("", "users.yaml")
+	tempFile, err := os.CreateTemp("", "users.yaml")
 	if err != nil {
 		t.Fatalf("Failed to create temporary file: %v", err)
 	}
@@ -27,7 +27,7 @@ users:
     groups:
       - group1
 `
-	err = ioutil.WriteFile(tempFile.Name(), []byte(initialData), 0644)
+	err = os.WriteFile(tempFile.Name(), []byte(initialData), 0644)
 	if err != nil {
 		t.Fatalf("Failed to write initial data to temporary file: %v", err)
 	}
@@ -49,7 +49,7 @@ users:
 	}
 
 	// Read the updated users.yaml file
-	usersData, err := ioutil.ReadFile(tempFile.Name())
+	usersData, err := os.ReadFile(tempFile.Name())
 	if err != nil {
 		t.Fatalf("Failed to read users.yaml file: %v", err)
 	}
