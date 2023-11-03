@@ -4,11 +4,14 @@
 
 { config, pkgs, ... }:
 
+let 
+  env = import ./envvars.nix;
+in 
 {
   imports =
     [
       ./hardware-configuration.nix
-#      ./authelia.nix
+      ./authelia.nix
       ./nginx.nix
       ./dokuwiki.nix
 #      ./team-1.nix
@@ -44,6 +47,7 @@
      extraGroups = [ "wheel" ];
      openssh.authorizedKeys.keys  = [
        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN2whKHD8XCH+CQwnagH+iBfkyjc/2f/QEfdsEi0SaKO <ssh://eric@eric.si|ed25519>"
+       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJdN4a3yJUlKIaVezOe4hE8fRK9DkGSzwoZ9vfpsBsHh ide0.sn3.eric.si"
      ];
    };
   users.users.mmerlin = {
@@ -67,6 +71,8 @@
      docker-compose
      htop
      croc
+     tmux
+     openssl
    ];
   virtualisation = {
     docker = {
