@@ -14,6 +14,7 @@ in
       ./authelia.nix
       ./nginx.nix
       ./dokuwiki.nix
+      ./mesh.nix
 #      ./team-1.nix
     ];
 

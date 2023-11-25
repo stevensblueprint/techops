@@ -7,9 +7,9 @@ in
   services.authelia.instances.main = {
     enable = true;
     secrets = {
-      jwtSecretFile = "/var/lib/authelia/jwt-secret";
-      storageEncryptionKeyFile = "/var/lib/authelia/storage-secret";
-      sessionSecretFile = "/var/lib/authelia/session-secret";
+      jwtSecretFile = "/var/lib/authelia-main/jwt-secret";
+      storageEncryptionKeyFile = "/var/lib/authelia-main/storage-secret";
+      sessionSecretFile = "/var/lib/authelia-main/session-secret";
     };
     settings = {
       theme = "dark";
@@ -26,6 +26,7 @@ in
       };
   
       authentication_backend = {
+        refresh_interval = "always";
         file = {
           path = "/var/lib/authelia-main/users.yml";
           watch = true;
@@ -37,7 +38,22 @@ in
         default_policy = "deny";
         rules = [
           {
-            domain = ["*.sitblueprint.com"];
+            domain = ["mesh.stag.sitblueprint.com"];
+            policy = "one_factor";
+	    subject = [
+		["group:dev"]
+	    ];
+          }
+          {
+            domain = ["wiki.sitblueprint.com"];
+            policy = "one_factor";
+          }
+          {
+            domain = ["wiki.sitblueprint.com"];
+            policy = "one_factor";
+          }
+          {
+            domain = ["stag0.nyc.sitblueprint.com"];
             policy = "one_factor";
           }
         ];
@@ -69,7 +85,7 @@ in
           host = "smtp.migadu.com";
           port = 587;
           username = "authelia@sitblueprint.com";
-          password = (builtins.readFile /var/lib/authelia/smtp-pass);
+          password = (builtins.readFile /var/lib/authelia-main/smtp-pass);
           sender = "authelia <authelia@sitblueprint.com>";
           startup_check_address = "tianyu.zhu@sitblueprint.com";
         };
