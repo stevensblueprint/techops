@@ -13,7 +13,8 @@ in
       ./hardware-configuration.nix
       ./authelia.nix
       ./nginx.nix
-      ./dokuwiki.nix
+      #./dokuwiki.nix
+      ./bookstacks.nix
       ./mesh.nix
 #      ./team-1.nix
     ];
