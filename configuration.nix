@@ -17,6 +17,7 @@ in
       ./bookstacks.nix
       ./mesh.nix
 #      ./team-1.nix
+      ./vaultwarden.nix
     ];
 
   boot.loader.grub = {
@@ -44,12 +45,12 @@ in
     
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
-  users.users.eric = {
+  users.users.ezri = {
      isNormalUser = true;
      extraGroups = [ "wheel" ];
      openssh.authorizedKeys.keys  = [
        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN2whKHD8XCH+CQwnagH+iBfkyjc/2f/QEfdsEi0SaKO <ssh://eric@eric.si|ed25519>"
-       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJdN4a3yJUlKIaVezOe4hE8fRK9DkGSzwoZ9vfpsBsHh ide0.sn3.eric.si"
+       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJdN4a3yJUlKIaVezOe4hE8fRK9DkGSzwoZ9vfpsBsHh ide0sn3.sn3.bns.sh"
      ];
    };
   users.users.mmerlin = {
@@ -58,6 +59,10 @@ in
      openssh.authorizedKeys.keys  = [
        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC/Es8RVItSr1Y9Cn+ieWsGE6CizFJKg+96lhXnWqfQX+E76m8uu+jFOXZVCKIyLdGi2HKhV/TMwVkIx5sWz/JcODyHIaiHvWFjMktjTUF8FHlTyAN4tCgp0laxtA0itqUkxhq1KZ/ITPfHi0lQ6BKPg3k2PDBgOBUXWcz2NJOZIZbehIwaT9MROjhShy1nVyA/qDik+wQ5BUeIyITzbUA1mX1RR97x6/CAAXAvBpnKxA86C19SPEONnS4wjVwEKFTGZbtjXmdJyFzp1CS6lDL6O4vLKem1Pgu0J+PxL/HdOVy5hEeqw3t9d9+1vrv/VylMYS0OompglaZGwyFNdRzwW9JgP/DQQLYiIHFxkziOrOnxcVC7nEY4PjFimJKd72gcmzsNJLA1cw1zR+Vg+6T9tpngmdpvC9CcQxquNHlqhpdrv0VFMXO0p8TNDM57zZmYriYAwSKl7mX/XlXO1EExz51t1yZ07xj/lhQ5muRQEpdpkol6E5X1HqQvcV74Q0aOoV4uf1S9Oo1nsLzT1/o21MLu68iVrVRqdzVC72gPuU50cT6C4YZMWkFYhE+ftee6lC9xL/4azGmMClQYP9SKyxOvUVD7+VFDtKOq8Ui/K2YvlfVSQ/eVKVNjmLYy7TSe6MnnFRE0dKFXdWq71AR/F92mtZBDP+r5xpwclp0wRw== mmerlin@stevens.edu"
      ];
+   };
+  users.users.docker = {
+     isNormalUser = true;
+     extraGroups = [ "wheel" "docker" ];
    };
   users.users.danielyu = {
      isNormalUser = true;

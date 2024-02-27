@@ -49,11 +49,11 @@ in
             policy = "one_factor";
           }
           {
-            domain = ["wiki.sitblueprint.com"];
+            domain = ["stag0.nyc.sitblueprint.com"];
             policy = "one_factor";
           }
           {
-            domain = ["stag0.nyc.sitblueprint.com"];
+            domain = ["vault.sitblueprint.com"];
             policy = "one_factor";
           }
         ];
