@@ -56,6 +56,13 @@ in
             domain = ["vault.sitblueprint.com"];
             policy = "one_factor";
           }
+          {
+            domain = ["auth.api.sitblueprint.com"];
+            policy = "one_factor";
+	    subject = [
+		["group:admin"]
+	    ];
+          }
         ];
       };
   
