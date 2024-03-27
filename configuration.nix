@@ -71,6 +71,15 @@ in
        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2KV7+4O510riEW8lMKhHaP3EpgVweOn97oXS2ezz4S blueprint"
      ];
    };
+   users.users.bertant = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keys = [
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL46ymjUob4hpUDqS8n/ktjep/yRjkE9JweDi4zKyQURfqNjLwSFc6q1i43TeZBWB2/9YF39b5fGvXCacppmHHk="
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGuH1Ha5WEbBv0SgoTziFJJZDY25w95qRIIGa3QcUfX+rBjc0vNgt0hKka6B0w79ThY4PJqB7l5C4rkX6OveQv8="
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJsrjxcDUv1iZuXlnclwP63Dj54Z52dG7UGFlQ2wOoG6pluuXkQ9n6GDlumulr48QU/bbWopIszC0+J9rSw49Mo="
+    ];
+   };
    environment.systemPackages = with pkgs; [
      vim
      wget
