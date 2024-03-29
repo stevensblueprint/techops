@@ -89,6 +89,7 @@ in
      croc
      tmux
      openssl
+     git
    ];
   virtualisation = {
     docker = {
