@@ -45,6 +45,13 @@ in
 	    ];
           }
           {
+            domain = ["aad.stag.sitblueprint.com"];
+            policy = "one_factor";
+	    subject = [
+		["group:dev"]
+	    ];
+          }
+          {
             domain = ["wiki.sitblueprint.com"];
             policy = "one_factor";
           }
@@ -62,6 +69,10 @@ in
 	    subject = [
 		["group:admin"]
 	    ];
+          }
+          {
+            domain = ["admin.sitblueprint.com"];
+            policy = "one_factor";
           }
         ];
       };
