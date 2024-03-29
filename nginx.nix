@@ -13,7 +13,25 @@ in
 		enableACME = true;
 		extraConfig = authelia-extras.authelia-location;
 		locations."/" = {
-			proxyPass = "http://172.17.0.1:8080";
+			proxyPass = "http://10.10.1.2:8080";
+			extraConfig = authelia-extras.authelia-auth;
+		};
+	};
+	services.nginx.virtualHosts."admin.sitblueprint.com" = {
+		forceSSL = true;
+		enableACME = true;
+		extraConfig = authelia-extras.authelia-location;
+		locations."/" = {
+			proxyPass = "http://10.10.1.3:80";
+			extraConfig = authelia-extras.authelia-auth;
+		};
+	};
+	services.nginx.virtualHosts."aad.stag.sitblueprint.com" = {
+		forceSSL = true;
+		enableACME = true;
+		extraConfig = authelia-extras.authelia-location;
+		locations."/" = {
+			proxyPass = "http://10.10.2.3:3000";
 			extraConfig = authelia-extras.authelia-auth;
 		};
 	};
