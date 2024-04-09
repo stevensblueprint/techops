@@ -75,7 +75,7 @@ in
      isNormalUser = true;
      extraGroups = [ "wheel" ];
      openssh.authorizedKeys.keys  = [
-       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2KV7+4O510riEW8lMKhHaP3EpgVweOn97oXS2ezz4S blueprint"
+       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEM1aKIdSM1pMfs6zq72MLb0BMRLRP2xt4JggCo1IxBQ blueprint"
      ];
    };
    users.users.bertant = {
