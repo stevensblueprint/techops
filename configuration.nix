@@ -87,6 +87,13 @@ in
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJsrjxcDUv1iZuXlnclwP63Dj54Z52dG7UGFlQ2wOoG6pluuXkQ9n6GDlumulr48QU/bbWopIszC0+J9rSw49Mo="
     ];
    };
+   users.users.rkirk = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYSUTwfMah7CnPk81OVAkMW8OMk1pZfThnhITCxAXxM ricky@DESKTOP-C6LQRTV"
+    ];
+   };
    environment.systemPackages = with pkgs; [
      vim
      wget
