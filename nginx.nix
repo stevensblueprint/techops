@@ -17,6 +17,15 @@ in
 			extraConfig = authelia-extras.authelia-auth;
 		};
 	};
+	services.nginx.virtualHosts."admin.api.sitblueprint.com" = {
+		forceSSL = true;
+		enableACME = true;
+		extraConfig = authelia-extras.authelia-location;
+		locations."/" = {
+			proxyPass = "http://10.10.1.2:8081";
+			extraConfig = authelia-extras.authelia-auth;
+		};
+	};
 	services.nginx.virtualHosts."admin.sitblueprint.com" = {
 		forceSSL = true;
 		enableACME = true;
