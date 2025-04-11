@@ -17,10 +17,8 @@ in
 	services.nginx.virtualHosts."vault.sitblueprint.com" = {
 		forceSSL = true;
 		enableACME = true;
-		extraConfig = authelia-extras.authelia-location;
 		locations."/" = {
 			proxyPass = "http://127.0.0.1:8222";
-			extraConfig = authelia-extras.authelia-auth;
 		};
 	};
 }

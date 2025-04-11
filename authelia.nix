@@ -60,10 +60,6 @@ in
             policy = "one_factor";
           }
           {
-            domain = ["vault.sitblueprint.com"];
-            policy = "one_factor";
-          }
-          {
             domain = ["auth.api.sitblueprint.com"];
             policy = "one_factor";
 	    subject = [
@@ -72,6 +68,10 @@ in
           }
           {
             domain = ["admin.sitblueprint.com"];
+            policy = "one_factor";
+          }
+          {
+            domain = ["admin-backend.stag.sitblueprint.com"];
             policy = "one_factor";
           }
         ];

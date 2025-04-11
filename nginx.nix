@@ -13,16 +13,7 @@ in
 		enableACME = true;
 		extraConfig = authelia-extras.authelia-location;
 		locations."/" = {
-			proxyPass = "http://10.10.1.2:8080";
-			extraConfig = authelia-extras.authelia-auth;
-		};
-	};
-	services.nginx.virtualHosts."admin.api.sitblueprint.com" = {
-		forceSSL = true;
-		enableACME = true;
-		extraConfig = authelia-extras.authelia-location;
-		locations."/" = {
-			proxyPass = "http://10.10.1.2:8081";
+			proxyPass = "http://10.10.5.2:8080";
 			extraConfig = authelia-extras.authelia-auth;
 		};
 	};
@@ -31,7 +22,7 @@ in
 		enableACME = true;
 		extraConfig = authelia-extras.authelia-location;
 		locations."/" = {
-			proxyPass = "http://10.10.1.3:80";
+			proxyPass = "http://10.10.5.3:80";
 			extraConfig = authelia-extras.authelia-auth;
 		};
 	};
@@ -42,6 +33,22 @@ in
 		locations."/" = {
 			proxyPass = "http://10.10.2.3:3000";
 			extraConfig = authelia-extras.authelia-auth;
+		};
+	};
+	services.nginx.virtualHosts."admin-backend.stag.sitblueprint.com" = {
+		forceSSL = true;
+		enableACME = true;
+		extraConfig = authelia-extras.authelia-location;
+		locations."/" = {
+			proxyPass = "http://10.10.4.3:8080";
+			extraConfig = authelia-extras.authelia-auth;
+		};
+	};
+	services.nginx.virtualHosts."c4p.stag.sitblueprint.com" = {
+		forceSSL = true;
+		enableACME = true;
+		locations."/" = {
+			proxyPass = "http://10.10.3.3:3000";
 		};
 	};
 	security.acme = {
